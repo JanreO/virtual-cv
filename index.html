@@ -103,11 +103,25 @@
   </div>
 
   <script>
-  function updateCardClasses() {
-    const cards = document.querySelectorAll('.card');
-    let centerIndex = 0;
-    let minDist = Infinity;
+function updateCardClasses() {
+  const cards = document.querySelectorAll('.card');
+  const scrollTop = document.querySelector('.main-content').scrollTop;
+  const scrollHeight = document.querySelector('.main-content').scrollHeight;
+  const clientHeight = document.querySelector('.main-content').clientHeight;
 
+  let centerIndex = 0;
+  let minDist = Infinity;
+
+  // Special: If we're at the top, lock to first card
+  if (scrollTop < 50) {
+    centerIndex = 0;
+  }
+  // Special: If we're near bottom, lock to last card
+  else if (scrollTop + clientHeight >= scrollHeight - 50) {
+    centerIndex = cards.length - 1;
+  }
+  // Otherwise find center card
+  else {
     cards.forEach((card, i) => {
       const rect = card.getBoundingClientRect();
       const dist = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
@@ -116,37 +130,33 @@
         centerIndex = i;
       }
     });
-
-    cards.forEach((card, i) => {
-      card.classList.remove('focused', 'prev1', 'prev2', 'next1', 'next2');
-      card.style.opacity = '0';
-      card.style.transform = 'scale(0.85)';
-
-      if (i === centerIndex) {
-        card.classList.add('focused');
-        card.style.opacity = '1';
-        card.style.transform = 'scale(1.1)';
-      } else if (i === centerIndex - 1) {
-        card.classList.add('prev1');
-        card.style.opacity = '0.5';
-      } else if (i === centerIndex - 2) {
-        card.classList.add('prev2');
-        card.style.opacity = '0.25';
-      } else if (i === centerIndex + 1) {
-        card.classList.add('next1');
-        card.style.opacity = '0.5';
-      } else if (i === centerIndex + 2) {
-        card.classList.add('next2');
-        card.style.opacity = '0.25';
-      }
-    });
   }
 
-  document.querySelector('.main-content').addEventListener('scroll', () => {
-    requestAnimationFrame(updateCardClasses);
-  });
+  cards.forEach((card, i) => {
+    card.classList.remove('focused', 'prev1', 'prev2', 'next1', 'next2');
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.85)';
 
-  window.addEventListener('load', updateCardClasses);
+    if (i === centerIndex) {
+      card.classList.add('focused');
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1.1)';
+    } else if (i === centerIndex - 1) {
+      card.classList.add('prev1');
+      card.style.opacity = '0.5';
+    } else if (i === centerIndex - 2) {
+      card.classList.add('prev2');
+      card.style.opacity = '0.25';
+    } else if (i === centerIndex + 1) {
+      card.classList.add('next1');
+      card.style.opacity = '0.5';
+    } else if (i === centerIndex + 2) {
+      card.classList.add('next2');
+      card.style.opacity = '0.25';
+    }
+  });
+}
+
 </script>
 </body>
 </html>

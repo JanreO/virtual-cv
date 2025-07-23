@@ -131,7 +131,7 @@ body, html {
 .card-stack::after {
   content: "";
   display: block;
-  height: 50vh;
+  height: 30vh;
   flex-shrink: 0;
 }
 
@@ -251,7 +251,7 @@ body, html {
 .card-stack::after {
   content: "";
   display: block;
-  height: 50vh;
+  height: 30vh;
   flex-shrink: 0;
 }
 

@@ -42,7 +42,7 @@ body {
   background-color: #f1f3f6;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-/* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
   padding: 50px 0;
   position: relative;
 }

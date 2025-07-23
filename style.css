@@ -247,7 +247,7 @@ body, html {
     font-size: 0.95rem;
   }
 
-
+.card-stack::before,
 .card-stack::after {
   content: "";
   display: block;

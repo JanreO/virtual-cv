@@ -5,7 +5,7 @@
   <title>Janré Oelofse - Virtual CV</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="" onload="handleResponsiveLayout()">
   <div class="container">
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -103,7 +103,7 @@
     </main>
   </div>
 
-  <script>
+<script>
 function updateCardClasses() {
   const cards = document.querySelectorAll('.card');
   const scrollTop = document.querySelector('.main-content').scrollTop;
@@ -113,16 +113,11 @@ function updateCardClasses() {
   let centerIndex = 0;
   let minDist = Infinity;
 
-  // Special: If we're at the top, lock to first card
   if (scrollTop < 50) {
     centerIndex = 0;
-  }
-  // Special: If we're near bottom, lock to last card
-  else if (scrollTop + clientHeight >= scrollHeight - 50) {
+  } else if (scrollTop + clientHeight >= scrollHeight - 50) {
     centerIndex = cards.length - 1;
-  }
-  // Otherwise find center card
-  else {
+  } else {
     cards.forEach((card, i) => {
       const rect = card.getBoundingClientRect();
       const dist = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
@@ -158,12 +153,24 @@ function updateCardClasses() {
   });
 }
 
+function handleResponsiveLayout() {
+  const isPortraitMobile = window.innerHeight > window.innerWidth && window.innerWidth <= 900;
+  if (isPortraitMobile) {
+    document.body.classList.add('mobile-mode');
+  } else {
+    document.body.classList.remove('mobile-mode');
+  }
+}
+
+window.addEventListener('resize', handleResponsiveLayout);
+window.addEventListener('load', () => {
+  updateCardClasses();
+  handleResponsiveLayout(); // <-- call it on load too
+});
+
 document.querySelector('.main-content').addEventListener('scroll', () => {
   requestAnimationFrame(updateCardClasses);
 });
-
-window.addEventListener('load', updateCardClasses);
-    
 </script>
 </body>
 </html>

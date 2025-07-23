@@ -21,104 +21,21 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      <section class="card">
-        <h2>Professional Summary</h2>
-        <p>
-          Third-year BSc IT student at North-West University, Potchefstroom, with a passion for coding, digital design, and entrepreneurship. 
-          Skilled in Java, C#, SQL Server, and C++, with experience building real-world applications such as a database management system and a messaging app. 
-          Adept at identifying and solving complex problems with practical software solutions. 
-          A proactive team leader with a track record of successfully guiding collaborative projects. 
-          Eager to gain hands-on experience in Artificial Intelligence (AI) and contribute to the development of smart, problem-solving applications.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>Education</h2>
-        <p>
-          <strong>Bachelor of Science in Information Technology</strong><br>
-          North-West University, Potchefstroom<br>
-          Expected Completion: 2025
-        </p>
-        <br>
-        <p>
-          <strong>National Senior Certificate (Grade 12)</strong><br>
-          Trio High School, Kroonstad, Free State<br>
-          Completed: 2022
-        </p>
-      </section>
-
-
-      <section class="card">
-        <h2>Technical Skills</h2>
-        <ul>
-          <li><strong>Programming Languages:</strong> Java, C#, C++</li>
-          <li><strong>Databases:</strong> SQL Server</li>
-          <li><strong>Tools & Technologies:</strong> Visual Studio, Git, Photoshop, Illustrator</li>
-          <li><strong>Other:</strong> Digital design, Animation, UI/UX concepts</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Projects</h2>
-        <h3>Database Management System</h3>
-        <p>Developed a custom database management system using C# and SQL Server with a secure and user-friendly interface.</p>
-        <h3>Messaging Application</h3>
-        <p>Built a real-time messaging application in C# with a smooth, responsive UI and efficient communication features.</p>
-      </section>
-
-      <section class="card">
-        <h2>Entrepreneurial Experience</h2>
-        <h3>Founder – Kresko Computers (2023 – Present)</h3>
-        <p>Buy and resell new and refurbished laptops. Handle testing, marketing, and customer service.</p>
-        <h3>Freelance Digital Artist</h3>
-        <p>Design and sell custom digital artwork and animations. Projects include Twitch emotes, Creator branding, and animated overlays.</p>
-      </section>
-
-      <section class="card">
-        <h2>Achievements</h2>
-        <ul>
-          <li>Developed a fully functional DBMS using C# and SQL</li>
-          <li>Created and deployed a real-time messaging app</li>
-          <li>Successfully led every university group project</li>
-          <li>Selected for the Free State Ringball Team – 2022</li>
-        </ul>
-      </section>
-
-
-      <section class="card">
-        <h2>Soft Skills</h2>
-        <ul>
-          <li>Leadership and team coordination</li>
-          <li>Creative problem-solving</li>
-          <li>Critical and analytical thinking</li>
-          <li>Effective time management</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Interests</h2>
-        <ul>
-          <li>Solving real-world problems with software</li>
-          <li>Artificial Intelligence and machine learning</li>
-          <li>Innovation in IT</li>
-          <li>Digital art and animation</li>
-          <li>Sports: Rugby & Ringball</li>
-          <li>Realistic pencil sketching</li>
-        </ul>
-      </section>
-
-
-      <section class="card">
-        <h2>Languages</h2>
-        <ul>
-          <li>English – Fluent</li>
-          <li>Afrikaans – Fluent</li>
-        </ul>
-      </section>
+      <div class="card-carousel">
+        <section class="card"> <h2>Professional Summary</h2> <p>Third-year BSc IT student... AI and problem-solving applications.</p> </section>
+        <section class="card"> <h2>Education</h2> <p><strong>Bachelor of Science</strong> at NWU, expected 2025</p> <p><strong>NSC</strong>, Trio High School, 2022</p> </section>
+        <section class="card"> <h2>Technical Skills</h2> <ul><li>Java, C#, C++</li><li>SQL Server</li><li>Visual Studio, Git, Photoshop</li></ul> </section>
+        <section class="card"> <h2>Projects</h2> <p>DBMS (C# + SQL) and Messaging App (C#)</p> </section>
+        <section class="card"> <h2>Entrepreneurship</h2> <p>Kresko Computers – Buy/resell laptops</p> <p>Freelance Digital Art – Twitch, overlays</p> </section>
+        <section class="card"> <h2>Achievements</h2> <ul><li>Built DBMS and Messaging App</li><li>Led group projects</li><li>Free State Ringball Team – 2022</li></ul> </section>
+        <section class="card"> <h2>Soft Skills</h2> <ul><li>Leadership</li><li>Problem-solving</li><li>Time Management</li></ul> </section>
+        <section class="card"> <h2>Interests</h2> <ul><li>AI & Real-World Problem Solving</li><li>Digital Art & Animation</li><li>Rugby, Ringball, Pencil Sketching</li></ul> </section>
+        <section class="card"> <h2>Languages</h2> <ul><li>English – Fluent</li><li>Afrikaans – Fluent</li></ul> </section>
+      </div>
     </main>
   </div>
 
-  <!-- Lightbox for Enlarged Profile Picture -->
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-bg" onclick="closeLightbox()"></div>
     <img src="profile.jpg" class="lightbox-img" alt="Enlarged Profile Picture">
@@ -127,20 +44,27 @@
   <script>
     const profilePic = document.querySelector('.profile-pic');
     const lightbox = document.getElementById('lightbox');
+    const cards = document.querySelectorAll('.card');
+    const container = document.querySelector('.main-content');
 
-    profilePic.addEventListener('click', () => {
-      lightbox.classList.add('active');
-    });
+    profilePic.addEventListener('click', () => lightbox.classList.add('active'));
+    document.addEventListener('keydown', (e) => e.key === 'Escape' && closeLightbox());
 
     function closeLightbox() {
       lightbox.classList.remove('active');
     }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    });
+    function highlightCenterCard() {
+      const centerY = window.innerHeight / 2;
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        card.classList.toggle('centered', Math.abs(cardCenter - centerY) < rect.height / 2);
+      });
+    }
+
+    container.addEventListener('scroll', highlightCenterCard);
+    window.addEventListener('load', highlightCenterCard);
   </script>
 </body>
 </html>

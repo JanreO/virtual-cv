@@ -4,157 +4,11 @@
   <meta charset="UTF-8">
   <title>Janré Oelofse - Virtual CV</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f2f5;
-      overflow: hidden;
-    }
-
-    .container {
-      display: flex;
-      height: 100vh;
-      width: 100vw;
-    }
-
-    .sidebar {
-      width: 25vw;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      padding: 20px;
-      text-align: center;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: url('ProfileBackground.png') center center / cover no-repeat, #1f2937;
-      z-index: 10;
-    }
-
-    .profile-pic {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 4px solid #fff;
-      cursor: pointer;
-    }
-
-    .main-content {
-      margin-left: 25vw;
-      width: 75vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .scroll-container {
-      height: 100%;
-      width: 100%;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-    }
-
-    .card-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 100px 0;
-      gap: 40px;
-    }
-
-    .card {
-      background: white;
-      width: 90%;
-      max-width: 600px;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      scroll-snap-align: center;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .card h2 {
-      color: #007acc;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      margin-top: 10px;
-      font-size: 1.1em;
-      color: #333;
-    }
-
-    .card ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    .card p, .card li {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .lightbox-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(8px);
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .lightbox-img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 12px;
-      z-index: 2;
-      transform: scale(0.8);
-      opacity: 0;
-      transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox.active .lightbox-img {
-      transform: scale(1);
-      opacity: 1;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
+    
+    <!-- Sidebar -->
     <aside class="sidebar">
       <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
       <h2>Janré Oelofse</h2>
@@ -165,23 +19,103 @@
       <p><a href="https://github.com/JanreO" target="_blank" style="color: #60c1ff;">GitHub</a></p>
     </aside>
 
+    <!-- Main Content -->
     <main class="main-content">
-      <div class="scroll-container">
-        <div class="card-list">
-          <section class="card"> <h2>Professional Summary</h2> <p>Third-year BSc IT student...</p> </section>
-          <section class="card"> <h2>Education</h2> <p><strong>Bachelor of Science...</p> </section>
-          <section class="card"> <h2>Technical Skills</h2> <ul><li>Java, C#, C++</li> ... </ul> </section>
-          <section class="card"> <h2>Projects</h2> <h3>Database Management System</h3> ... </section>
-          <section class="card"> <h2>Entrepreneurial Experience</h2> <h3>Founder – Kresko Computers</h3> ... </section>
-          <section class="card"> <h2>Achievements</h2> <ul><li>DBMS using C#...</li> </ul> </section>
-          <section class="card"> <h2>Soft Skills</h2> <ul><li>Leadership...</li> </ul> </section>
-          <section class="card"> <h2>Interests</h2> <ul><li>AI, Ringball, Sketching...</li> </ul> </section>
-          <section class="card"> <h2>Languages</h2> <ul><li>English, Afrikaans</li> </ul> </section>
-        </div>
-      </div>
+      <section class="card">
+        <h2>Professional Summary</h2>
+        <p>
+          Third-year BSc IT student at North-West University, Potchefstroom, with a passion for coding, digital design, and entrepreneurship. 
+          Skilled in Java, C#, SQL Server, and C++, with experience building real-world applications such as a database management system and a messaging app. 
+          Adept at identifying and solving complex problems with practical software solutions. 
+          A proactive team leader with a track record of successfully guiding collaborative projects. 
+          Eager to gain hands-on experience in Artificial Intelligence (AI) and contribute to the development of smart, problem-solving applications.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Education</h2>
+        <p>
+          <strong>Bachelor of Science in Information Technology</strong><br>
+          North-West University, Potchefstroom<br>
+          Expected Completion: 2025
+        </p>
+        <br>
+        <p>
+          <strong>National Senior Certificate (Grade 12)</strong><br>
+          Trio High School, Kroonstad, Free State<br>
+          Completed: 2022
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Technical Skills</h2>
+        <ul>
+          <li><strong>Programming Languages:</strong> Java, C#, C++</li>
+          <li><strong>Databases:</strong> SQL Server</li>
+          <li><strong>Tools & Technologies:</strong> Visual Studio, Git, Photoshop, Illustrator</li>
+          <li><strong>Other:</strong> Digital design, Animation, UI/UX concepts</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Projects</h2>
+        <h3>Database Management System</h3>
+        <p>Developed a custom database management system using C# and SQL Server with a secure and user-friendly interface.</p>
+        <h3>Messaging Application</h3>
+        <p>Built a real-time messaging application in C# with a smooth, responsive UI and efficient communication features.</p>
+      </section>
+
+      <section class="card">
+        <h2>Entrepreneurial Experience</h2>
+        <h3>Founder – Kresko Computers (2023 – Present)</h3>
+        <p>Buy and resell new and refurbished laptops. Handle testing, marketing, and customer service.</p>
+        <h3>Freelance Digital Artist</h3>
+        <p>Design and sell custom digital artwork and animations. Projects include Twitch emotes, Creator branding, and animated overlays.</p>
+      </section>
+
+      <section class="card">
+        <h2>Achievements</h2>
+        <ul>
+          <li>Developed a fully functional DBMS using C# and SQL</li>
+          <li>Created and deployed a real-time messaging app</li>
+          <li>Successfully led every university group project</li>
+          <li>Selected for the Free State Ringball Team – 2022</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Soft Skills</h2>
+        <ul>
+          <li>Leadership and team coordination</li>
+          <li>Creative problem-solving</li>
+          <li>Critical and analytical thinking</li>
+          <li>Effective time management</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Interests</h2>
+        <ul>
+          <li>Solving real-world problems with software</li>
+          <li>Artificial Intelligence and machine learning</li>
+          <li>Innovation in IT</li>
+          <li>Digital art and animation</li>
+          <li>Sports: Rugby & Ringball</li>
+          <li>Realistic pencil sketching</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Languages</h2>
+        <ul>
+          <li>English – Fluent</li>
+          <li>Afrikaans – Fluent</li>
+        </ul>
+      </section>
     </main>
   </div>
 
+  <!-- Lightbox for Enlarged Profile Picture -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-bg" onclick="closeLightbox()"></div>
     <img src="profile.jpg" class="lightbox-img" alt="Enlarged Profile Picture">
@@ -200,7 +134,9 @@
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
     });
   </script>
 </body>

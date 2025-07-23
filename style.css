@@ -31,12 +31,11 @@ body, html {
   align-items: center;
   justify-content: center;
 
-  background-image: url('ProfileBackground.png'); /* use local file */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #1f2937; /* fallback */
+  background: 
+    url('ProfileBackground.png') center center / cover no-repeat,
+    #1f2937;
 }
+
 
 
 

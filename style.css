@@ -49,14 +49,18 @@ body, html {
   cursor: pointer;
 }
 
-/* Main content */
 .main-content {
   margin-left: 25vw;
   padding: 40px;
   width: 75vw;
   height: 100vh;
   overflow-y: auto;
+
+  background: 
+    url('informationbackground.png') center center / cover no-repeat,
+    #f0f2f5; /* fallback color */
 }
+
 
 /* Cards */
 .card {

@@ -247,11 +247,12 @@ body, html {
     font-size: 0.95rem;
   }
 
-  .card-stack::before,
-  .card-stack::after {
-    content: "";
-    display: block;
-    height: 0;
-  }
+.card-stack::before,
+.card-stack::after {
+  content: "";
+  display: block;
+  height: 50vh;
+  flex-shrink: 0;
 }
+
 

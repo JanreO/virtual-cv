@@ -136,9 +136,10 @@ body, html {
 }
 
 @media screen and (max-width: 412px) and (orientation: portrait) {
-  .card-spacer {
-    height: 37.5vh; /* enough to push last card to center of 75% */
-    flex-shrink: 0;
+  .container {
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
   }
 
 

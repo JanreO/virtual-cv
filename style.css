@@ -61,6 +61,7 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 100vh 0;
 }
 
 /* Cards */
@@ -72,9 +73,10 @@ body, html {
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
   transform: scale(0.85);
   scroll-snap-align: center;
+  opacity: 0;
+  z-index: 1;
 }
 
 .card.focused {
@@ -95,7 +97,6 @@ body, html {
   z-index: 3;
 }
 
-/* Typography */
 .card h2 {
   color: #007acc;
   margin-bottom: 15px;

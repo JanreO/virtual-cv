@@ -251,7 +251,7 @@ body, html {
 .card-stack::before {
   content: "";
   display: block;
-  height: 20vh;
+  height: 30vh;
   flex-shrink: 0;
 }
 .card-stack::after {

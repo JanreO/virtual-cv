@@ -107,59 +107,63 @@
   </div>
 
   <script>
-    function updateCardClasses() {
-      const cards = document.querySelectorAll('.card');
-      const scrollTop = document.querySelector('.main-content').scrollTop;
-      const scrollHeight = document.querySelector('.main-content').scrollHeight;
-      const clientHeight = document.querySelector('.main-content').clientHeight;
+function updateCardClasses() {
+  const cards = document.querySelectorAll('.card');
+  const mainContent = document.querySelector('.main-content');
+  const isMobile = window.innerWidth <= 412 && window.innerHeight > window.innerWidth;
 
-      let centerIndex = 0;
-      let minDist = Infinity;
+  const scrollTop = mainContent.scrollTop;
+  const clientHeight = mainContent.clientHeight;
 
-      if (scrollTop < 50) {
-        centerIndex = 0;
-      } else if (scrollTop + clientHeight >= scrollHeight - 50) {
-        centerIndex = cards.length - 1;
-      } else {
-        cards.forEach((card, i) => {
-          const rect = card.getBoundingClientRect();
-          const dist = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
-          if (dist < minDist) {
-            minDist = dist;
-            centerIndex = i;
-          }
-        });
-      }
+  // Calculate visual center
+  const visualCenter = isMobile
+    ? window.innerHeight * 0.25 + (window.innerHeight * 0.75) / 2 // halfway down the bottom 75%
+    : window.innerHeight / 2; // desktop = true center
 
-      cards.forEach((card, i) => {
-        card.classList.remove('focused', 'prev1', 'prev2', 'next1', 'next2');
-        card.style.opacity = '0';
-        card.style.transform = 'scale(0.85)';
+  let centerIndex = 0;
+  let minDist = Infinity;
 
-        if (i === centerIndex) {
-          card.classList.add('focused');
-          card.style.opacity = '1';
-          card.style.transform = 'scale(1.1)';
-        } else if (i === centerIndex - 1) {
-          card.classList.add('prev1');
-          card.style.opacity = '0.5';
-        } else if (i === centerIndex - 2) {
-          card.classList.add('prev2');
-          card.style.opacity = '0.25';
-        } else if (i === centerIndex + 1) {
-          card.classList.add('next1');
-          card.style.opacity = '0.5';
-        } else if (i === centerIndex + 2) {
-          card.classList.add('next2');
-          card.style.opacity = '0.25';
-        }
-      });
+  cards.forEach((card, i) => {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const dist = Math.abs(cardCenter - visualCenter);
+
+    if (dist < minDist) {
+      minDist = dist;
+      centerIndex = i;
     }
+  });
 
-    window.addEventListener('load', updateCardClasses);
-    document.querySelector('.main-content').addEventListener('scroll', () => {
-      requestAnimationFrame(updateCardClasses);
-    });
+  cards.forEach((card, i) => {
+    card.classList.remove('focused', 'prev1', 'prev2', 'next1', 'next2');
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.85)';
+
+    if (i === centerIndex) {
+      card.classList.add('focused');
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1.1)';
+    } else if (i === centerIndex - 1) {
+      card.classList.add('prev1');
+      card.style.opacity = '0.5';
+    } else if (i === centerIndex - 2) {
+      card.classList.add('prev2');
+      card.style.opacity = '0.25';
+    } else if (i === centerIndex + 1) {
+      card.classList.add('next1');
+      card.style.opacity = '0.5';
+    } else if (i === centerIndex + 2) {
+      card.classList.add('next2');
+      card.style.opacity = '0.25';
+    }
+  });
+}
+
+window.addEventListener('load', updateCardClasses);
+document.querySelector('.main-content').addEventListener('scroll', () => {
+  requestAnimationFrame(updateCardClasses);
+});
+
   </script>
 </body>
 </html>

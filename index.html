@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Janré Oelofse - Virtual CV</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    
+
     <!-- Sidebar -->
     <aside class="sidebar">
-      <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+      <img src="profile.jpg" alt="Profile Picture" class="profile-pic" />
       <h2>Janré Oelofse</h2>
       <p>BSc IT Student</p>
       <p>Email: <a href="mailto:janreoelofse@gmail.com" style="color: #60c1ff;">janreoelofse@gmail.com</a></p>
@@ -22,105 +22,122 @@
     <!-- Main Content -->
     <main class="main-content">
       <div class="card-stack">
-        <div class="card">
+        <div class="spacer"></div>
+
+        <!-- Cards -->
+        <section class="card">
           <h2>Professional Summary</h2>
-          <p>Third-year BSc IT student at North-West University, Potchefstroom...</p>
-        </div>
-        <div class="card">
+          <p>
+            Third-year BSc IT student at North-West University, Potchefstroom, with a passion for coding, digital design, and entrepreneurship.
+            Skilled in Java, C#, SQL Server, and C++, with experience building real-world applications such as a database management system and a messaging app.
+            Adept at identifying and solving complex problems with practical software solutions.
+            A proactive team leader with a track record of successfully guiding collaborative projects.
+            Eager to gain hands-on experience in Artificial Intelligence (AI) and contribute to the development of smart, problem-solving applications.
+          </p>
+        </section>
+
+        <section class="card">
           <h2>Education</h2>
-          <p><strong>Bachelor of Science in Information Technology</strong> – NWU, 2025</p>
-          <p><strong>National Senior Certificate</strong> – Trio High School, 2022</p>
-        </div>
-        <div class="card">
+          <p><strong>Bachelor of Science in Information Technology</strong><br>
+          North-West University, Potchefstroom<br>
+          Expected Completion: 2025</p>
+          <br />
+          <p><strong>National Senior Certificate (Grade 12)</strong><br>
+          Trio High School, Kroonstad, Free State<br>
+          Completed: 2022</p>
+        </section>
+
+        <section class="card">
           <h2>Technical Skills</h2>
           <ul>
-            <li><strong>Languages:</strong> Java, C#, C++</li>
+            <li><strong>Programming Languages:</strong> Java, C#, C++</li>
             <li><strong>Databases:</strong> SQL Server</li>
-            <li><strong>Tools:</strong> VS, Git, Photoshop</li>
+            <li><strong>Tools & Technologies:</strong> Visual Studio, Git, Photoshop, Illustrator</li>
+            <li><strong>Other:</strong> Digital design, Animation, UI/UX concepts</li>
           </ul>
-        </div>
-        <div class="card">
+        </section>
+
+        <section class="card">
           <h2>Projects</h2>
           <h3>Database Management System</h3>
-          <p>Built in C# with SQL Server</p>
-          <h3>Messaging App</h3>
-          <p>Real-time app in C#</p>
-        </div>
-        <div class="card">
+          <p>Developed a custom database management system using C# and SQL Server with a secure and user-friendly interface.</p>
+          <h3>Messaging Application</h3>
+          <p>Built a real-time messaging application in C# with a smooth, responsive UI and efficient communication features.</p>
+        </section>
+
+        <section class="card">
           <h2>Entrepreneurial Experience</h2>
-          <h3>Kresko Computers</h3>
-          <p>Refurbished laptop sales and support</p>
+          <h3>Founder – Kresko Computers (2023 – Present)</h3>
+          <p>Buy and resell new and refurbished laptops. Handle testing, marketing, and customer service.</p>
           <h3>Freelance Digital Artist</h3>
-          <p>Art, animation, Twitch emotes</p>
-        </div>
-        <div class="card">
+          <p>Design and sell custom digital artwork and animations. Projects include Twitch emotes, Creator branding, and animated overlays.</p>
+        </section>
+
+        <section class="card">
           <h2>Achievements</h2>
           <ul>
-            <li>Built DBMS in C# and SQL</li>
-            <li>Led every group project</li>
-            <li>Free State Ringball Team – 2022</li>
+            <li>Developed a fully functional DBMS using C# and SQL</li>
+            <li>Created and deployed a real-time messaging app</li>
+            <li>Successfully led every university group project</li>
+            <li>Selected for the Free State Ringball Team – 2022</li>
           </ul>
-        </div>
-        <div class="card">
+        </section>
+
+        <section class="card">
           <h2>Soft Skills</h2>
           <ul>
-            <li>Leadership</li>
-            <li>Problem-solving</li>
-            <li>Time Management</li>
+            <li>Leadership and team coordination</li>
+            <li>Creative problem-solving</li>
+            <li>Critical and analytical thinking</li>
+            <li>Effective time management</li>
           </ul>
-        </div>
-        <div class="card">
+        </section>
+
+        <section class="card">
           <h2>Interests</h2>
           <ul>
-            <li>AI and Machine Learning</li>
-            <li>Realistic Pencil Sketches</li>
-            <li>Digital Art and Animation</li>
+            <li>Solving real-world problems with software</li>
+            <li>Artificial Intelligence and machine learning</li>
+            <li>Innovation in IT</li>
+            <li>Digital art and animation</li>
             <li>Sports: Rugby & Ringball</li>
+            <li>Realistic pencil sketching</li>
           </ul>
-        </div>
-        <div class="card">
+        </section>
+
+        <section class="card">
           <h2>Languages</h2>
           <ul>
             <li>English – Fluent</li>
             <li>Afrikaans – Fluent</li>
           </ul>
-        </div>
+        </section>
+
+        <div class="spacer"></div>
       </div>
     </main>
   </div>
 
-  <!-- Scroll Script -->
   <script>
-    const stack = document.querySelector('.card-stack');
-    const cards = Array.from(stack.children);
-    let index = 0;
+    const cards = document.querySelectorAll('.card');
 
-    function updateCards() {
-      cards.forEach((card, i) => {
-        card.classList.remove('active', 'mid', 'small');
+    function updateFocus() {
+      const centerY = window.innerHeight / 2;
+      cards.forEach(card => {
+        const box = card.getBoundingClientRect();
+        const cardCenter = box.top + box.height / 2;
+        const distance = Math.abs(cardCenter - centerY);
+        const scale = 1 - Math.min(distance / centerY, 1) * 0.15;
+        const opacity = 1 - Math.min(distance / centerY, 1) * 0.4;
 
-        if (i === index) card.classList.add('active');
-        else if (i === index - 1 || i === index + 1) card.classList.add('mid');
-        else card.classList.add('small');
+        card.style.transform = `scale(${scale})`;
+        card.style.opacity = opacity;
       });
-
-      const offset = cards[index].offsetTop - (window.innerHeight / 2) + (cards[index].offsetHeight / 2);
-      stack.style.transform = `translateY(-${offset}px)`;
     }
 
-    function scrollToNextCard(delta) {
-      index += delta;
-      if (index < 0) index = 0;
-      if (index >= cards.length) index = cards.length - 1;
-      updateCards();
-    }
-
-    window.addEventListener('wheel', (e) => {
-      if (e.deltaY > 0) scrollToNextCard(1);
-      else scrollToNextCard(-1);
-    });
-
-    updateCards();
+    document.querySelector('.main-content').addEventListener('scroll', updateFocus);
+    window.addEventListener('resize', updateFocus);
+    window.addEventListener('load', updateFocus);
   </script>
 </body>
 </html>

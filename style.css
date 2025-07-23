@@ -182,4 +182,49 @@ body, html {
   .card.next2 {
     transform: scale(0.95);
   }
+  body.mobile-mode .container {
+  flex-direction: column;
+}
+
+body.mobile-mode .sidebar {
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 15px;
+  text-align: center;
+  background-size: cover;
+}
+
+body.mobile-mode .profile-pic {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 10px;
+}
+
+body.mobile-mode .main-content {
+  margin-left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+body.mobile-mode .card {
+  width: 85%;
+  padding: 20px;
+}
+
+body.mobile-mode .card.focused {
+  transform: scale(1.3);
+}
+
+body.mobile-mode .card.prev1,
+body.mobile-mode .card.next1 {
+  transform: scale(1.05);
+}
+
+body.mobile-mode .card.prev2,
+body.mobile-mode .card.next2 {
+  transform: scale(0.95);
+}
+
 }

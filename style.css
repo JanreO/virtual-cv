@@ -134,3 +134,55 @@ body, html {
   height: 50vh;
   flex-shrink: 0;
 }
+
+@media (max-width: 768px) {
+  /* Stack layout */
+  .container {
+    flex-direction: column;
+  }
+
+  /* Sidebar becomes top bar */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 15px;
+    text-align: center;
+    background-size: cover;
+  }
+
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+  }
+
+  /* Main content full width */
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  /* Cards: slightly smaller scale, fit screen */
+  .card {
+    width: 85%;
+    padding: 20px;
+  }
+
+  .card.focused {
+    transform: scale(1.3); /* Slightly smaller for small screens */
+  }
+
+  .card.prev1,
+  .card.next1 {
+    transform: scale(1.05);
+  }
+
+  .card.prev2,
+  .card.next2 {
+    transform: scale(0.95);
+  }
+}
+

@@ -139,62 +139,129 @@ body, html {
   .container {
     flex-direction: column;
     height: 100vh;
+    overflow: hidden;
   }
 
+  /* --- Top 25% section --- */
   .sidebar {
+    width: 100%;
+    height: 25vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 25vh;
+    justify-content: space-evenly;
     padding: 10px;
-    position: relative;
     background-size: cover;
+    background-position: center;
+    position: relative;
   }
 
   .profile-pic {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    max-height: 90%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+  }
+
+  .sidebar > *:first-child {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 
   .sidebar-info {
-    width: 50%;
-    color: white;
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     text-align: left;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    padding: 0 5px;
+    height: 100%;
+    overflow: hidden;
+    font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+    line-height: 1.2;
+    color: white;
   }
 
+  .sidebar-info h2 {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    margin-bottom: 4px;
+  }
+
+  .sidebar-info p {
+    font-size: clamp(0.6rem, 3vw, 0.9rem);
+    margin: 2px 0;
+  }
+
+  /* --- Bottom 75% section --- */
   .main-content {
-    margin-left: 0;
     width: 100%;
     height: 75vh;
     overflow-y: scroll;
-    padding: 0 20%;
+    margin-left: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .card-stack {
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .card {
-    width: 100%;
-    padding: 20px;
-    font-size: 0.95rem;
+    width: 80%;
+    height: 60%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(1);
+    opacity: 1;
+
+    /* Scale text */
+    font-size: clamp(0.6rem, 3.5vw, 1rem);
+    line-height: 1.4;
   }
 
-  .card.focused {
-    transform: scale(1.2);
+  .card h2 {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    margin-bottom: 8px;
   }
 
-  .card.prev1,
-  .card.next1 {
-    transform: scale(1.05);
+  .card h3 {
+    font-size: clamp(0.9rem, 4.5vw, 1.3rem);
+    margin-top: 10px;
   }
 
-  .card.prev2,
-  .card.next2 {
-    transform: scale(0.95);
+  .card ul {
+    padding-left: 18px;
+  }
+
+  .card li,
+  .card p {
+    font-size: clamp(0.65rem, 3vw, 0.9rem);
+  }
+
+  .card-stack::before,
+  .card-stack::after {
+    content: "";
+    height: 0; /* Remove vertical spacing */
+    display: none;
   }
 }
-
-
 }

@@ -161,10 +161,7 @@ document.querySelector('.main-content').addEventListener('scroll', () => {
   requestAnimationFrame(updateCardClasses);
 });
 
-window.addEventListener('load', () => {
-  document.querySelector('.main-content').scrollTop += 1;
-  updateCardClasses();
-});
+window.addEventListener('load', updateCardClasses);
     
 </script>
 </body>

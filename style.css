@@ -158,7 +158,7 @@ body, html {
   }
 
   .profile-pic {
-    width: 80%;
+    width: 750%;
     height: auto;
     max-height: 80%;
     aspect-ratio: 1 / 1;
@@ -251,7 +251,7 @@ body, html {
 .card-stack::before {
   content: "";
   display: block;
-  height: 30vh;
+  height: 20vh;
   flex-shrink: 0;
 }
 .card-stack::after {

@@ -158,9 +158,10 @@ body, html {
   }
 
   .profile-pic {
-    width: 75%;
+    width: auto;
     height: auto;
     max-height: 80%;
+    max-width: 80%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;

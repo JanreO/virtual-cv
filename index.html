@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Janré Oelofse - Virtual CV</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
+    
     <!-- Sidebar -->
     <aside class="sidebar">
-      <img src="profile.jpg" alt="Profile Picture" class="profile-pic" />
+      <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
       <h2>Janré Oelofse</h2>
       <p>BSc IT Student</p>
       <p>Email: <a href="mailto:janreoelofse@gmail.com" style="color: #60c1ff;">janreoelofse@gmail.com</a></p>
@@ -21,111 +22,105 @@
     <!-- Main Content -->
     <main class="main-content">
       <div class="card-stack">
-        <section class="card"> <!-- keep original content here -->
+        <div class="card">
           <h2>Professional Summary</h2>
-          <p>Third-year BSc IT student at North-West University... [your full content]</p>
-        </section>
-
-        <section class="card">
+          <p>Third-year BSc IT student at North-West University, Potchefstroom...</p>
+        </div>
+        <div class="card">
           <h2>Education</h2>
-          <p><strong>Bachelor of Science in Information Technology</strong><br>North-West University, Potchefstroom<br>Expected Completion: 2025</p><br>
-          <p><strong>National Senior Certificate</strong><br>Trio High School, Kroonstad, Free State<br>Completed: 2022</p>
-        </section>
-
-        <section class="card">
+          <p><strong>Bachelor of Science in Information Technology</strong> – NWU, 2025</p>
+          <p><strong>National Senior Certificate</strong> – Trio High School, 2022</p>
+        </div>
+        <div class="card">
           <h2>Technical Skills</h2>
           <ul>
             <li><strong>Languages:</strong> Java, C#, C++</li>
             <li><strong>Databases:</strong> SQL Server</li>
-            <li><strong>Tools:</strong> Visual Studio, Git, Photoshop</li>
-            <li><strong>Design:</strong> Digital Art, Animation</li>
+            <li><strong>Tools:</strong> VS, Git, Photoshop</li>
           </ul>
-        </section>
-
-        <section class="card">
+        </div>
+        <div class="card">
           <h2>Projects</h2>
           <h3>Database Management System</h3>
-          <p>Developed using C# and SQL Server...</p>
-          <h3>Messaging Application</h3>
-          <p>Real-time app with responsive UI...</p>
-        </section>
-
-        <section class="card">
+          <p>Built in C# with SQL Server</p>
+          <h3>Messaging App</h3>
+          <p>Real-time app in C#</p>
+        </div>
+        <div class="card">
           <h2>Entrepreneurial Experience</h2>
-          <p><strong>Kresko Computers</strong><br>Buy & resell laptops...</p>
-          <p><strong>Freelance Digital Artist</strong><br>Design custom art for creators</p>
-        </section>
-
-        <section class="card">
+          <h3>Kresko Computers</h3>
+          <p>Refurbished laptop sales and support</p>
+          <h3>Freelance Digital Artist</h3>
+          <p>Art, animation, Twitch emotes</p>
+        </div>
+        <div class="card">
           <h2>Achievements</h2>
           <ul>
-            <li>DBMS project with C# and SQL</li>
-            <li>Real-time messaging app</li>
-            <li>Led all university group projects</li>
+            <li>Built DBMS in C# and SQL</li>
+            <li>Led every group project</li>
             <li>Free State Ringball Team – 2022</li>
           </ul>
-        </section>
-
-        <section class="card">
+        </div>
+        <div class="card">
           <h2>Soft Skills</h2>
           <ul>
-            <li>Leadership & coordination</li>
-            <li>Creative problem-solving</li>
-            <li>Time management</li>
+            <li>Leadership</li>
+            <li>Problem-solving</li>
+            <li>Time Management</li>
           </ul>
-        </section>
-
-        <section class="card">
+        </div>
+        <div class="card">
           <h2>Interests</h2>
           <ul>
-            <li>AI & Machine Learning</li>
-            <li>Digital Art & Animation</li>
-            <li>Rugby & Ringball</li>
-            <li>Realistic pencil sketching</li>
+            <li>AI and Machine Learning</li>
+            <li>Realistic Pencil Sketches</li>
+            <li>Digital Art and Animation</li>
+            <li>Sports: Rugby & Ringball</li>
           </ul>
-        </section>
-
-        <section class="card">
+        </div>
+        <div class="card">
           <h2>Languages</h2>
           <ul>
             <li>English – Fluent</li>
             <li>Afrikaans – Fluent</li>
           </ul>
-        </section>
+        </div>
       </div>
     </main>
   </div>
 
+  <!-- Scroll Script -->
   <script>
     const stack = document.querySelector('.card-stack');
-    const cards = [...document.querySelectorAll('.card')];
-    let activeIndex = 0;
+    const cards = Array.from(stack.children);
+    let index = 0;
 
-    function updateCardStyles() {
+    function updateCards() {
       cards.forEach((card, i) => {
-        const distance = Math.abs(i - activeIndex);
         card.classList.remove('active', 'mid', 'small');
-        if (i === activeIndex) {
-          card.classList.add('active');
-        } else if (distance === 1) {
-          card.classList.add('mid');
-        } else {
-          card.classList.add('small');
-        }
+
+        if (i === index) card.classList.add('active');
+        else if (i === index - 1 || i === index + 1) card.classList.add('mid');
+        else card.classList.add('small');
       });
+
+      const offset = cards[index].offsetTop - (window.innerHeight / 2) + (cards[index].offsetHeight / 2);
+      stack.style.transform = `translateY(-${offset}px)`;
+    }
+
+    function scrollToNextCard(delta) {
+      index += delta;
+      if (index < 0) index = 0;
+      if (index >= cards.length) index = cards.length - 1;
+      updateCards();
     }
 
     window.addEventListener('wheel', (e) => {
-      if (e.deltaY > 0 && activeIndex < cards.length - 1) {
-        activeIndex++;
-        updateCardStyles();
-      } else if (e.deltaY < 0 && activeIndex > 0) {
-        activeIndex--;
-        updateCardStyles();
-      }
+      if (e.deltaY > 0) scrollToNextCard(1);
+      else scrollToNextCard(-1);
     });
 
-    updateCardStyles();
+    updateCards();
   </script>
 </body>
 </html>

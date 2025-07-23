@@ -7,7 +7,6 @@
 </head>
 <body>
   <div class="container">
-
     <!-- Sidebar -->
     <aside class="sidebar">
       <img src="profile.jpg" alt="Profile Picture" class="profile-pic" />
@@ -22,29 +21,16 @@
     <!-- Main Content -->
     <main class="main-content">
       <div class="card-stack">
-        <div class="spacer"></div>
-
-        <!-- Cards -->
         <section class="card">
           <h2>Professional Summary</h2>
-          <p>
-            Third-year BSc IT student at North-West University, Potchefstroom, with a passion for coding, digital design, and entrepreneurship.
-            Skilled in Java, C#, SQL Server, and C++, with experience building real-world applications such as a database management system and a messaging app.
-            Adept at identifying and solving complex problems with practical software solutions.
-            A proactive team leader with a track record of successfully guiding collaborative projects.
-            Eager to gain hands-on experience in Artificial Intelligence (AI) and contribute to the development of smart, problem-solving applications.
-          </p>
+          <p>Third-year BSc IT student at North-West University, Potchefstroom, with a passion for coding, digital design, and entrepreneurship. Skilled in Java, C#, SQL Server, and C++, with experience building real-world applications such as a database management system and a messaging app. Adept at identifying and solving complex problems with practical software solutions. A proactive team leader with a track record of successfully guiding collaborative projects. Eager to gain hands-on experience in Artificial Intelligence (AI) and contribute to the development of smart, problem-solving applications.</p>
         </section>
 
         <section class="card">
           <h2>Education</h2>
-          <p><strong>Bachelor of Science in Information Technology</strong><br>
-          North-West University, Potchefstroom<br>
-          Expected Completion: 2025</p>
+          <p><strong>Bachelor of Science in Information Technology</strong><br>North-West University, Potchefstroom<br>Expected Completion: 2025</p>
           <br />
-          <p><strong>National Senior Certificate (Grade 12)</strong><br>
-          Trio High School, Kroonstad, Free State<br>
-          Completed: 2022</p>
+          <p><strong>National Senior Certificate (Grade 12)</strong><br>Trio High School, Kroonstad, Free State<br>Completed: 2022</p>
         </section>
 
         <section class="card">
@@ -60,9 +46,9 @@
         <section class="card">
           <h2>Projects</h2>
           <h3>Database Management System</h3>
-          <p>Developed a custom database management system using C# and SQL Server with a secure and user-friendly interface.</p>
+          <p>Developed a custom DBMS using C# and SQL Server with a secure and user-friendly interface.</p>
           <h3>Messaging Application</h3>
-          <p>Built a real-time messaging application in C# with a smooth, responsive UI and efficient communication features.</p>
+          <p>Built a real-time messaging application in C# with a responsive UI and efficient communication features.</p>
         </section>
 
         <section class="card">
@@ -112,32 +98,26 @@
             <li>Afrikaans – Fluent</li>
           </ul>
         </section>
-
-        <div class="spacer"></div>
       </div>
     </main>
   </div>
 
+  <!-- Optional: Lightbox for profile image -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-bg" onclick="closeLightbox()"></div>
+    <img src="profile.jpg" class="lightbox-img" alt="Enlarged Profile Picture" />
+  </div>
+
   <script>
-    const cards = document.querySelectorAll('.card');
-
-    function updateFocus() {
-      const centerY = window.innerHeight / 2;
-      cards.forEach(card => {
-        const box = card.getBoundingClientRect();
-        const cardCenter = box.top + box.height / 2;
-        const distance = Math.abs(cardCenter - centerY);
-        const scale = 1 - Math.min(distance / centerY, 1) * 0.15;
-        const opacity = 1 - Math.min(distance / centerY, 1) * 0.4;
-
-        card.style.transform = `scale(${scale})`;
-        card.style.opacity = opacity;
-      });
+    const profilePic = document.querySelector('.profile-pic');
+    const lightbox = document.getElementById('lightbox');
+    profilePic.addEventListener('click', () => lightbox.classList.add('active'));
+    function closeLightbox() {
+      lightbox.classList.remove('active');
     }
-
-    document.querySelector('.main-content').addEventListener('scroll', updateFocus);
-    window.addEventListener('resize', updateFocus);
-    window.addEventListener('load', updateFocus);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
   </script>
 </body>
 </html>

@@ -158,15 +158,14 @@ body, html {
   }
 
   .profile-pic {
-    width: auto;
-    height: auto;
-    max-height: 80%;
-    max-width: 80%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  max-height: 90%;
   }
+
 
   .sidebar > *:first-child {
     flex-basis: 50%;

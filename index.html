@@ -42,7 +42,7 @@
         <ul>
           <li><strong>Programming Languages:</strong> Java, C#, C++</li>
           <li><strong>Databases:</strong> SQL Server</li>
-          <li><strong>Tools & Technologies:</strong> Visual Studio, Git</li>
+          <li><strong>Tools & Technologies:</strong> Visual Studio, Git, Photoshop, Illustrator</li>
           <li><strong>Other:</strong> Digital design, Animation, UI/UX concepts</li>
         </ul>
       </section>
@@ -101,5 +101,30 @@
       </section>
     </main>
   </div>
+
+  <!-- Lightbox for Enlarged Profile Picture -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-bg" onclick="closeLightbox()"></div>
+    <img src="profile.jpg" class="lightbox-img" alt="Enlarged Profile Picture">
+  </div>
+
+  <script>
+    const profilePic = document.querySelector('.profile-pic');
+    const lightbox = document.getElementById('lightbox');
+
+    profilePic.addEventListener('click', () => {
+      lightbox.classList.add('active');
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>

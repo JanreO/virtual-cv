@@ -125,3 +125,11 @@ body, html {
   font-size: 1rem;
   line-height: 1.6;
 }
+
+.card-stack::before,
+.card-stack::after {
+  content: "";
+  display: block;
+  height: 50vh;
+  flex-shrink: 0;
+}

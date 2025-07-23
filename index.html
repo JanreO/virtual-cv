@@ -108,16 +108,44 @@
     <img src="profile.jpg" class="lightbox-img" alt="Enlarged Profile Picture" />
   </div>
 
-  <script>
-    const profilePic = document.querySelector('.profile-pic');
-    const lightbox = document.getElementById('lightbox');
-    profilePic.addEventListener('click', () => lightbox.classList.add('active'));
-    function closeLightbox() {
-      lightbox.classList.remove('active');
+    <script>
+    function updateCardClasses() {
+      const cards = document.querySelectorAll('.card');
+      let centerIndex = 0;
+
+      // Find the card closest to center of screen
+      let minDist = Infinity;
+      cards.forEach((card, i) => {
+        const rect = card.getBoundingClientRect();
+        const dist = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
+        if (dist < minDist) {
+          minDist = dist;
+          centerIndex = i;
+        }
+      });
+
+      cards.forEach((card, i) => {
+        card.classList.remove('focused', 'prev1', 'prev2', 'next1', 'next2');
+        card.style.opacity = '0'; // Default hidden
+
+        if (i === centerIndex) {
+          card.classList.add('focused');
+          card.style.opacity = '1';
+        } else if (i === centerIndex - 1 || i === centerIndex + 1) {
+          card.classList.add(i < centerIndex ? 'prev1' : 'next1');
+          card.style.opacity = '0.5';
+        } else if (i === centerIndex - 2 || i === centerIndex + 2) {
+          card.classList.add(i < centerIndex ? 'prev2' : 'next2');
+          card.style.opacity = '0.25';
+        }
+      });
     }
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
+
+    document.querySelector('.main-content').addEventListener('scroll', () => {
+      requestAnimationFrame(updateCardClasses);
     });
+
+    updateCardClasses(); // Initial setup
   </script>
 </body>
 </html>

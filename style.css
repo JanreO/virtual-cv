@@ -30,13 +30,14 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  background-image: url('ProfileBackground.png');
+
+  background-image: url('ProfileBackground.png'); /* use local file */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #1f2937; /* fallback color */
+  background-color: #1f2937; /* fallback */
 }
+
 
 
 .profile-pic {

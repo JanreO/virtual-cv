@@ -140,7 +140,7 @@ body, html {
     height: 37.5vh; /* enough to push last card to center of 75% */
     flex-shrink: 0;
   }
-}
+
 
   /* --- Top 25% --- */
   .sidebar {

@@ -30,6 +30,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   background:
     url('ProfileBackground.png') center center / cover no-repeat,
     #1f2937;
@@ -45,29 +46,54 @@ body, html {
   cursor: pointer;
 }
 
+/* Main Content */
 .main-content {
   margin-left: 25vw;
-  padding: 40px;
+  padding: 40px 20px;
   width: 75vw;
   height: 100vh;
-  overflow-y: auto;
-  background: #f0f2f5;
+  overflow: hidden;
+  background-color: #f0f2f5;
+}
+
+/* Card Stack */
+.card-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  height: 100%;
 }
 
 /* Cards */
 .card {
+  width: 60%;
   background: white;
   padding: 25px;
-  margin-bottom: 25px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.6;
+  transform: scale(0.85);
 }
 
-.card:hover {
-  transform: scale(1.03);
-  background-color: #e6f4ff;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+/* Active and surrounding cards */
+.card.active {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 3;
+}
+.card.mid {
+  transform: scale(0.92);
+  opacity: 0.8;
+  z-index: 2;
+}
+.card.small {
+  transform: scale(0.85);
+  opacity: 0.6;
+  z-index: 1;
 }
 
 /* Typography */
@@ -92,7 +118,7 @@ body, html {
   line-height: 1.6;
 }
 
-/* Lightbox */
+/* Lightbox (still included if needed) */
 .lightbox {
   display: none;
   position: fixed;
@@ -127,7 +153,6 @@ body, html {
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/* Active Lightbox */
 .lightbox.active {
   display: flex;
 }
